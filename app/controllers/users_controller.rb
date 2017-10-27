@@ -3,7 +3,7 @@ class UsersController < ApplicationController
         @user = User.new
     end
 
-    def main
+    def profile 
     end
 
     def create
