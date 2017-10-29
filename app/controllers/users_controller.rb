@@ -1,6 +1,12 @@
 class UsersController < ApplicationController
+    
+    def index
+        @users = Trade.all
+    end
+
     def new
         @user = User.new
+        @users = Trade.all
     end
 
     def profile 

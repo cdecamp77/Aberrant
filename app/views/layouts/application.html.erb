@@ -9,7 +9,8 @@
   </head>
 
   <body>
-  <div class="logo"><%= image_tag("Aberrant.png", :alt => "main logo") %></div>
+  <header class="navbar">
+  <div class="container">
     <p> 
       <div class="later"><% if current_user %>
         Welcome, <%= current_user.name %>
@@ -20,16 +21,16 @@
         &nbsp;&nbsp;|&nbsp;&nbsp;
         <%= link_to 'Sign Up', new_user_path %>&nbsp;&nbsp;|&nbsp;&nbsp;
       <% end %>
+      </div>
+      <div class="logo"><%= image_tag("Aberrant.png", :alt => "main logo") %></div>
+      <div class="links">
         <a href="/">Home</a>&nbsp;&nbsp;|&nbsp;&nbsp;
         <a href="/trade">Trade</a>&nbsp;&nbsp;|&nbsp;&nbsp;
         <a href="/profile">Profile</a>&nbsp;&nbsp;|&nbsp;&nbsp;
+        </div>
     </p>
       </div>
-    <header class="navbar">
-<div class="navbar-class">
-<div class="container">
-      </div>
-    </div>
+
   </header>
     <%= yield %>
   </body>

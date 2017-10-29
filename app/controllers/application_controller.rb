@@ -3,7 +3,13 @@ class ApplicationController < ActionController::Base
 
   private
 
-  helper_method :current_user
+  helper_method :current_user, :trades
+
+      helper_method :trades
+
+    def trades
+        @trades = Trade.all
+    end
 
   def authorize
     redirect_to login_path, alert: 'Not authorized - you must be logged in' if current_user.nil?
