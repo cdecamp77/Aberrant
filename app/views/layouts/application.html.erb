@@ -3,35 +3,33 @@
   <head>
     <title>Aberrant Barter</title>
     <%= csrf_meta_tags %>
-
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
-  <header class="navbar">
-  <div class="container">
-    <p> 
-      <div class="later"><% if current_user %>
-        Welcome, <%= current_user.name %>
-        &nbsp;&nbsp;|&nbsp;&nbsp;
-        <%= link_to 'Log Out', session_path('dummy'), method: :delete %>&nbsp;&nbsp;|&nbsp;&nbsp;
-      <% else %>
-        <%= link_to 'Log In', login_path %>
-        &nbsp;&nbsp;|&nbsp;&nbsp;
-        <%= link_to 'Sign Up', new_user_path %>&nbsp;&nbsp;|&nbsp;&nbsp;
-      <% end %>
+  <nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="/">Aberrant Barter</a>
       </div>
-      <div class="logo"><%= image_tag("Aberrant.png", :alt => "main logo") %></div>
-      <div class="links">
-        <a href="/">Home</a>&nbsp;&nbsp;|&nbsp;&nbsp;
-        <a href="/trade">Trade</a>&nbsp;&nbsp;|&nbsp;&nbsp;
-        <a href="/profile">Profile</a>&nbsp;&nbsp;|&nbsp;&nbsp;
-        </div>
-    </p>
-      </div>
-
-  </header>
+      <ul class="nav navbar-nav">
+        <li><a href="/trade">Trade</a></li>
+        <li><a href="/profile">Profile</a></li>
+        <li><a href="#">Contact Me</a></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <% if current_user %>
+          <li class="navbar-text">Welcome, <%= current_user.name %></li>
+          <li><%= link_to 'Log Out', session_path('dummy'), method: :delete %></li>
+        <% else %>
+          <li class="glyphicon"><%= link_to 'Log In', login_path %></li>
+          <li class="glyphicon"><%= link_to 'Sign Up', new_user_path %></li>
+        <% end %>
+      </ul>
+    </div>
+  </nav>
     <%= yield %>
   </body>
 </html>

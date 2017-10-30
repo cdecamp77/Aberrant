@@ -12,7 +12,7 @@ class TradesController < ApplicationController
     def create
         @trade = Trade.new(trade_params)
             if @trade.save
-                redirect_to trades_path
+                redirect_to trade_path
             else
                 render :new
             end
