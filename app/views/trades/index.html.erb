@@ -1,0 +1,12 @@
+<h1>Created Trades</h1>
+
+<ul>
+	<% @trades.each do |trade| %>
+		<li>Name:<p><%= trade.title %></p></li>
+		<li>Description<p><%= trade.description %></p></li>
+		<%= image_tag trade.image.url %>
+		<%= link_to 'View trade', trade_path(trade) %>
+	<% end %>
+</ul>
+
+<%#= link_to 'New Trade', new_trade_path, class: 'btn btn-success btn-large' %>

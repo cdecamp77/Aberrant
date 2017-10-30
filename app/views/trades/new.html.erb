@@ -1,8 +1,8 @@
 <h1>this is where a user would create a new trade</h1>
 
-<%= form_for @trade, url: trades_new_path, html: { multipart: true } do |form| %>
-  <%= form.label :trade_name %>
-  <%= form.text_field :trade_name %><br>
+<%= form_for @trade, html: { multipart: true } do |form| %>
+  <%= form.label :title %>
+  <%= form.text_field :title %><br>
 
   <%= form.label :description %>
   <%= form.text_field :description %><br>
@@ -12,15 +12,3 @@
   <%= form.submit 'Create Trade!' %>
 <% end %>
 
-<h1>Trades</h1>
-<hr>
-<p>
-<ul>
-	<% @trades.each do |trade| %>
-		<li>Name:<p><%= trade.trade_name %></p></li>
-		<li>Description<p><%= trade.description %></p></li>
-		<%= image_tag trade.image.url %>
-		<%= link_to 'View Trade', trade_path(trade) %>
-	<% end %>
-</ul>
-</p>

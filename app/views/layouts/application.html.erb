@@ -9,19 +9,21 @@
   </head>
 
   <body>
-  <nav class="navbar navbar-inverse">
+  <nav class="navbar navbar-inverse navbar-fixed-top">
     <div class="container-fluid">
       <div class="navbar-header">
         <a class="navbar-brand" href="/">Aberrant Barter</a>
       </div>
       <ul class="nav navbar-nav">
-        <li><a href="/trade">Trade</a></li>
-        <li><a href="/profile">Profile</a></li>
-        <li><a href="#">Contact Me</a></li>
+        <li><%= link_to 'View Trades', trades_path %></li>
+        <% if current_user %>
+          <li><%= link_to 'Add Trade', new_trade_path %></li>
+        <% end %>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <% if current_user %>
-          <li class="navbar-text">Welcome, <%= current_user.name %></li>
+          <li class="navbar-text">Welcome, <%= current_user.name.capitalize %></li>
+          <li><%= link_to 'Profile', profile_path %></li>
           <li><%= link_to 'Log Out', session_path('dummy'), method: :delete %></li>
         <% else %>
           <li class="glyphicon"><%= link_to 'Log In', login_path %></li>

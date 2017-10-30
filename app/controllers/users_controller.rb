@@ -1,15 +1,11 @@
 class UsersController < ApplicationController
-    
-    def index
-        @user = User.all
-    end 
 
     def new
         @user = User.new
     end
 
-    def profile 
-        @user = User.new
+    def show 
+        @user = current_user
     end
 
     def create
@@ -28,5 +24,5 @@ class UsersController < ApplicationController
     def user_params
         params.require(:user).permit(:name, :email, :password, :password_confirmation)
     end
-    
+
 end

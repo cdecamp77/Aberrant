@@ -1,9 +1,9 @@
 class CreateTrades < ActiveRecord::Migration[5.1]
   def change
     create_table :trades do |t|
-      t.string :trade_name
+      t.string :title
       t.text :description
-      t.attachment :trade_image
+      t.references :user, foreign_key: true
 
       t.timestamps
     end
