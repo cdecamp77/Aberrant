@@ -24,6 +24,15 @@ body {
 }
 
 p {
-    font-size: 24px;
+    font-size: 20px;
 }
 
+.view-trades {
+    font-size: 25px;
+    list-style: none;
+}
+
+.link {
+    font-size: 15px;
+    color: #CAAD7A;
+}

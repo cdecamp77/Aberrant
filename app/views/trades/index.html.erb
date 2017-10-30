@@ -1,12 +1,16 @@
 <h1>Created Trades</h1>
-
-<ul>
+<div class="container-fluid">
+<ul class="view-trades">
 	<% @trades.each do |trade| %>
 		<li>Name:<p><%= trade.title %></p></li>
-		<li>Description<p><%= trade.description %></p></li>
-		<%= image_tag trade.image.url %>
-		<%= link_to 'View trade', trade_path(trade) %>
+		<li><%= image_tag trade.image.url, height: 200, width: 200 %></li>
+		<li class="link"><%= link_to 'View trade', trade_path(trade) %></li>
+        <% if current_user %>
+        <li class="link"><%= link_to "Delete Trade!", trade_path(trade), method: :delete, data: { confirm: "Are you sure you want to delete this trade?"} %></li>
+        <% end %>
 	<% end %>
 </ul>
 
 <%#= link_to 'New Trade', new_trade_path, class: 'btn btn-success btn-large' %>
+
+</div>

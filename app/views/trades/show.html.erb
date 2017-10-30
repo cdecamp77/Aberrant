@@ -1,1 +1,10 @@
 <h1>Trade should show up right here</h1>
+
+<p><%= @trade.title %></p>
+<p><%= @trade.description %></p>
+<%= image_tag @trade.image.url%>
+
+
+
+<p><%= link_to "Delete Trade", trade_path(@trade), method: :delete if @trade.user == current_user %></p>
+

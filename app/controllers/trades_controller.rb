@@ -18,7 +18,17 @@ class TradesController < ApplicationController
         end
     end
 
-    private
+    def show
+        @trade = Trade.find(params[:id])
+    end
+
+    def destroy
+        @trade = Trade.find(params[:id])
+        @trade.destroy
+        redirect_to trades_path
+    end
+
+private
 
   def trade_params
     params.require(:trade).permit(:title, :description, :image)
