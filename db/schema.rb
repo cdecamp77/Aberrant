@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171027175513) do
+ActiveRecord::Schema.define(version: 20171029234957) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -35,6 +35,8 @@ ActiveRecord::Schema.define(version: 20171027175513) do
     t.datetime "trade_image_updated_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "offer_id"
+    t.index ["offer_id"], name: "index_trades_on_offer_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -44,6 +46,13 @@ ActiveRecord::Schema.define(version: 20171027175513) do
     t.string "password_digest"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "trade_id"
+    t.bigint "offer_id"
+    t.index ["offer_id"], name: "index_users_on_offer_id"
+    t.index ["trade_id"], name: "index_users_on_trade_id"
   end
 
+  add_foreign_key "trades", "offers"
+  add_foreign_key "users", "offers"
+  add_foreign_key "users", "trades"
 end
