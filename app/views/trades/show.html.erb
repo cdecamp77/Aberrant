@@ -1,10 +1,12 @@
 <h1>Trade should show up right here</h1>
+<div class="container-fluid">
+<p class="col-md-12">Name of item: <%= @trade.title %></p>
+<p class="col-md-12">Item Description: <%= @trade.description %></p>
+<span class="col-md-12"><%= image_tag @trade.image.url%></span>
 
-<p><%= @trade.title %></p>
-<p><%= @trade.description %></p>
-<%= image_tag @trade.image.url%>
 
 
+<p class="col-md-12"><%= link_to "Delete Trade", trade_path(@trade), method: :delete if @trade.user == current_user %></p>
+<p class="col-md-12"><%= link_to "Make Offer" if current_user %></p>
 
-<p><%= link_to "Delete Trade", trade_path(@trade), method: :delete if @trade.user == current_user %></p>
-<p><%= link_to "Make Offer" if current_user %></p>
+</div>

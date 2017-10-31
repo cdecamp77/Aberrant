@@ -1,10 +1,10 @@
 <h1>Created Trades</h1>
 <div class="container-fluid">
-<ul class="view-trades">
+<ul class="view-trades col-md-6">
 	<% @trades.each do |trade| %>
-		<li>Name:<p><%= trade.title %></p></li>
-		<li><%= image_tag trade.image.url, height: 200, width: 200 %></li>
-		<li class="link"><%= link_to 'View trade', trade_path(trade) %></li>
+		<li class="">Name: <%= trade.title %></li>
+		<li class=""><%= image_tag trade.image.url, height: 200, width: 200 %>
+		<p><%= link_to 'View trade', trade_path(trade) %></p></li>
 	<% end %>
 </ul>
 

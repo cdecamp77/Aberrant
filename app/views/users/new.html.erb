@@ -1,5 +1,5 @@
 <div class="container-fluid">
-  <h1>Sign Up</h1>
+  <h1 class="row">Sign Up</h1>
   <%= form_for @user do |f| %>
   <% if @user.errors.any? %>
     <div class="error_messages">
@@ -11,26 +11,26 @@
       </ul>
     </div>
   <% end %>
-  <div class="field">
-    <%= f.label :name %>
-    <%= f.text_field :name, placeholder: "Chris"%>
+  <div class="field row">
+    <span class="col-md-1"><%= f.label :name %></span>
+    <span class=""><%= f.text_field :name, placeholder: "Chris"%></span>
   </div>
-  <div class="field">
-    <%= f.label :email %>
+  <div class="field row">
+    <span class="col-md-1"><%= f.label :email %></span>
     <%= f.text_field :email, placeholder: "name@email.com" %>
   </div>
-  <div class="field">
-    <%= f.label :phone %>
+  <div class="field row">
+    <span class="col-md-1"><%= f.label :phone %></span>
     <%= f.text_field :phone, placeholder: "123456789"%>
   </div>
-  <div class="field">
-    <%= f.label :password %>
+  <div class="field row">
+    <span class="col-md-1"><%= f.label :password %></span>
     <%= f.password_field :password, placeholder: "abc123"%>
   </div>
-  <div class="field">
-    <%= f.label :password_confirmation %>
+  <div class="field row">
+    <span class="col-md-1"><%= f.label :password_confirmation %></span>
     <%= f.password_field :password_confirmation, placeholder: "must match above"%>
   </div>
-  <div class="actions"><%= f.submit %></div>
+  <div class="actions row col-md-1"><%= f.submit %></div>
   <% end %>
 </div>

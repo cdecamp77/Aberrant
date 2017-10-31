@@ -1,13 +1,18 @@
-<h1>Log In</h1>
+
+
+<h1>_Log In_</h1>
+<div class="container-fluid">
 <p id="alert"><%= alert %></p>
 <%= form_tag sessions_path do %>
-  <div class="field">
-    <%= label_tag :email %>
-    <%= text_field_tag :email, params[:email] %>
+  <div class="field col-md-12">
+    <p class="row col-md-2">Email: 
+    </span class="col-md-10"><%= text_field_tag :email, params[:email] %></span></p>
   </div>
-  <div class="field">
-    <%= label_tag :password %>
-    <%= password_field_tag :password %>
+  <div class="field col-md-12">
+    <p class=" row col-md-2">Password: 
+    </span class="col-md-2"><%= password_field_tag :password %></span></p>
   </div>
-  <div class="actions"><%= submit_tag "Log In" %></div>
+  <div class="actions row"><%= submit_tag "Log In" %></div>
 <% end %>
+
+</div>

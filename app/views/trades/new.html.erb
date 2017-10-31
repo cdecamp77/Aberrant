@@ -1,14 +1,18 @@
 <h1>this is where a user would create a new trade</h1>
+<div class="container-fluid">
+  <%= form_for @trade, html: { multipart: true } do |form| %>
+    <div class="row">
+      <p class="col-md-2">Trade Title: </p>
+      <span class="col-md-1"><%= form.text_field :title %></span>
+    </div>
+    <div class="row">
+      <p class="col-md-2">Trade Description: </p>
+      <span class="col-md-1"><%= form.text_field :description %></span>
+    </div>
 
-<%= form_for @trade, html: { multipart: true } do |form| %>
-  <%= form.label :title %>
-  <%= form.text_field :title %><br>
+    <span class="row"><%= form.file_field :image %></span>
 
-  <%= form.label :description %>
-  <%= form.text_field :description %><br>
+    <span class="row"><%= form.submit 'Create Trade!' %></span>
+  <% end %>
 
-  <%= form.file_field :image %><br><br>
-
-  <%= form.submit 'Create Trade!' %>
-<% end %>
-
+</div>
