@@ -22,7 +22,7 @@
     <% @trade.offers.each do |offer| %>
         <li>
             <p>Offer submitted by: <%= offer.user.name.capitalize %></p>
-            <p>Description: <%= offer.content %></p>
+            <p>This is the offer: <%= offer.content %></p>
             <%= image_tag offer.image.url, height: 250, width: 250 %>
         </li>
         
