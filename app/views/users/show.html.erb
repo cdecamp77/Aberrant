@@ -4,4 +4,12 @@
 <p class="col-md-4">User Email: <%= @user.email %></p>
 <p class="col-md-4">User Phone Number: 951-218-3629<%= @user.phone %></p>
 
+<ul class="col-md-2">
+  <% @trades.each do |trade| %>
+    <li>
+      <%= image_tag trade.image %><strong><%= link_to "View Trade", trade_path(trade) %> </strong>
+    <% end %>
+    </li>
+</ul>
+
 </div>

@@ -26,8 +26,8 @@
           <li><%= link_to 'Profile', profile_path %></li>
           <li><%= link_to 'Log Out', session_path('dummy'), method: :delete %></li>
         <% else %>
-          <li class="glyphicon"><%= link_to 'Log In', login_path %></li>
-          <li class="glyphicon"><%= link_to 'Sign Up', new_user_path %></li>
+          <li class=""><%= link_to 'Log In', login_path %></li>
+          <li class=""><%= link_to 'Sign Up', new_user_path %></li>
         <% end %>
       </ul>
     </div>

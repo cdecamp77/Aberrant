@@ -1,11 +1,16 @@
 class UsersController < ApplicationController
 
+    def index
+    end
+
     def new
         @user = User.new
     end
 
     def show 
         @user = current_user
+        @trades = @user.trades
+        
     end
 
     def create
