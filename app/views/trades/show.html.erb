@@ -6,7 +6,7 @@
 
 
 <% unless Offer.exists?(user: current_user, trade: @trade) %>
-    <% if current_user && @user != @trade.user_id %>
+    <% if current_user && @trade.user != current_user %>
     <%= form_for [@trade, @offer] do |f| %>
         <div class="row">
         <p class="col-md-4">Offer Details: 
