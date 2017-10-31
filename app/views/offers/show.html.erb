@@ -1,4 +1,18 @@
 <div class="container-fluid">
 <h1>Make an offer!<h1>
 
+<p class="col-md-12">Name of item: <%= @trade.title %></p>
+<p class="col-md-12">Item Description: <%= @trade.description %></p>
+<span class="col-md-12"><%= image_tag @trade.image.url%></span>
+
+  <%= form_for @offer, html: { multipart: true } do |form| %>
+    <div class="row">
+      <p class="col-md-12">Offer Description: </p>
+      <span class="col-md-12"><%= form.text_field :content %></span>
+    </div>
+    <span class=""><%= form.file_field :image %></span>
+
+    <span class="row"><%= form.submit 'Submit Offer!' %></span>
+  <% end %>
+
 </div>

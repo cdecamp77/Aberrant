@@ -4,27 +4,27 @@ class OffersController < ApplicationController
     end
 
     def new
-        @offer = Offer.new(trade_id: params[:trade_id])
+        @offer = Offer.new
+        @trade = Trade.find(params[:id])
     end
 
     def create
         @offer = Offer.new(offer_params)
-        if @offer.save
-            flash[:success] = "Offer successfully added"
-            redirect_to offers_path(@offer)
-        else
-           render :new
-        end
+        @offer.user = current_user
+        @offer.trade_id = params[:trade_id]
+        @offer.save
+        redirect_to trade_path(params[:trade_id])
     end
 
     def show
-        @offer = Offer.find(params[:id])
+        @trade = Trade.find(params[:id])
+        @offer = Offer.new
     end
 
 private
 
     def offer_params
-        params.require(:offer).permit(:offer, :trade_id)
+        params.require(:offer).permit(:content, :image)
     end
 
 end

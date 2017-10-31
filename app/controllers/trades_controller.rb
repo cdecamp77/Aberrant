@@ -18,8 +18,12 @@ class TradesController < ApplicationController
         end
     end
 
+    def update
+    end
+
     def show
         @trade = Trade.find(params[:id])
+        @offer = Offer.new
     end
 
     def destroy
