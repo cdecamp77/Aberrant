@@ -1,13 +1,19 @@
 <h1>Created Trades</h1>
 <div class="container-fluid">
-<ul class="view-trades col-md-6">
-	<% @trades.each do |trade| %>
-		<li class="">Name: <%= trade.title %></li>
-		<li class=""><%= image_tag trade.image.url, height: 200, width: 200 %>
-		<p><%= link_to 'View trade', trade_path(trade) %></p></li>
-	<% end %>
-</ul>
-
-<%#= link_to 'New Trade', new_trade_path, class: 'btn btn-success btn-large' %>
-
+	<div class="filter-bar">
+		<% if params.has_key?(:filter) %><%= link_to "ALL", trades_path %><% else %><span>ALL</span><% end %>
+		&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+		<% if !params.has_key?(:filter) || (params.has_key?(:filter) && params[:filter] == 'CLOSED' ) %><%= link_to "OPEN", trades_path(filter: 'OPEN') %><% else %><span>OPEN</span><% end %>
+		&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+		<% if !params.has_key?(:filter) || (params.has_key?(:filter) && params[:filter] == 'OPEN' ) %><%= link_to "CLOSED", trades_path(filter: 'CLOSED') %><% else %><span>CLOSED</span><% end %>
+	</div>
+	<div class="col-md-3">
+		<ul class="view-trades">
+			<% @trades.each do |trade| %>
+				<li class="">Name: <%= trade.title %></li>
+				<li class=""><%= image_tag trade.image.url, height: 200, width: 200 %>
+				<p><%= link_to 'View Trade', trade_path(trade) %></p></li>
+			<% end %>
+		</ul>
+	</div>
 </div>

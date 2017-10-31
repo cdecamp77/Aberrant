@@ -6,6 +6,8 @@ resources :trades do
   resources :offers, except: [:index, :show, :new], shallow: true
 end
 
+patch '/offers/:id/accept', to: 'offers#accept', as: 'accept'
+
 resources :users, only: [:new, :create]
 get '/profile', to: 'users#show'
 get '/profile/edit', to: 'users#edit'

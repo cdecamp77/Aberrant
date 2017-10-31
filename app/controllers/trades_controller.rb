@@ -1,7 +1,13 @@
 class TradesController < ApplicationController
 
     def index
-      @trades = Trade.all
+        if params[:filter] && params[:filter] == 'OPEN'
+            @trades = Trade.all.to_a.select {|t| !t.closed}
+        elsif params[:filter] && params[:filter] == 'CLOSED'
+            @trades = Trade.all.to_a.select {|t| t.closed}
+        else params[:filter] && params[:filter] == 'CLOSED'
+            @trades = Trade.all
+        end
     end
 
     def new

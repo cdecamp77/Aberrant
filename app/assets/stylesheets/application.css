@@ -36,3 +36,7 @@ p {
     font-size: 15px;
     color: #CAAD7A;
 }
+
+.filter-bar span {
+    color: red;
+}

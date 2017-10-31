@@ -1,12 +1,13 @@
 <h1>Trade should show up right here</h1>
 <div class="container-fluid">
-<p class="col-md-12">Name of item: <%= @trade.title %></p>
-<p class="col-md-12">Item Description: <%= @trade.description %></p>
-<span class="col-md-12"><%= image_tag @trade.image.url%></span>
+<% if @trade.closed %><h2>CLOSED</h2><% end %>
+<p class="">Name of item: <%= @trade.title %></p>
+<p class="">Item Description: <%= @trade.description %></p>
+<span class=""><%= image_tag @trade.image.url%></span>
 
 
 <% unless Offer.exists?(user: current_user, trade: @trade) %>
-    <% if current_user && @trade.user != current_user %>
+    <% if current_user && @trade.user != current_user && !@trade.closed %>
     <%= form_for [@trade, @offer] do |f| %>
         <div class="row">
         <p class="col-md-4">Offer Details: 
@@ -24,6 +25,7 @@
             <p>Offer submitted by: <%= offer.user.name.capitalize %></p>
             <p>This is the offer: <%= offer.content %></p>
             <%= image_tag offer.image.url, height: 250, width: 250 %>
+            <%= link_to "Accept Offer", accept_path(offer), method: :patch if @trade.user == current_user && !@trade.closed %>
         </li>
         
     <% end %>

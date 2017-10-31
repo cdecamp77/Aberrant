@@ -32,6 +32,12 @@
       </ul>
     </div>
   </nav>
+
+  <div>
+    <% if !current_user %>
+      <h1>Please log-in or sign up to view all features</h1>
+    <% end %>
+  </div>
     <%= yield %>
   </body>
 </html>
