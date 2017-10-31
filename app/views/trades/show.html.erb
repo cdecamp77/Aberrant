@@ -7,4 +7,4 @@
 
 
 <p><%= link_to "Delete Trade", trade_path(@trade), method: :delete if @trade.user == current_user %></p>
-
+<p><%= link_to "Make Offer" if current_user %></p>

@@ -13,6 +13,8 @@ get '/profile', to: 'users#show'
 get '/profile/edit', to: 'users#edit'
 patch '/profile', to: 'users#update'
 
+resources :offers
+
 resources :sessions, only: [:new, :create, :destroy]
 
 get '/login', to: 'sessions#new'
