@@ -25,7 +25,7 @@
             <p>Offer submitted by: <%= offer.user.name.capitalize %></p>
             <p>This is the offer: <%= offer.content %></p>
             <%= image_tag offer.image.url, height: 250, width: 250 %>
-            <%= link_to "Accept Offer", accept_path(offer), method: :patch if @trade.user == current_user && !@trade.closed %>
+            <%#= link_to "Accept Offer", accept_path(@trade), method: :patch if @trade.user == current_user && !@trade.closed %>
         </li>
         
     <% end %>

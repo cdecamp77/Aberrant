@@ -21,6 +21,13 @@ class OffersController < ApplicationController
         @offer = Offer.new
     end
 
+    # def accept
+    #     @trade = Trade.find(params[:id])
+    #     @offer = Offer.find(params[:id])
+    #     @offer["accepted"] = true
+    #     redirect_to trade_path
+    # end
+
 private
 
     def offer_params
