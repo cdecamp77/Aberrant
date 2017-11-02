@@ -2,17 +2,19 @@
 <div class="container-fluid">
     <% if @trade.closed %><h2 class="headline">CLOSED</h2><% end %>
         <div class="view-trade row">
-            <p class="col-md-3">Name of item: <br><%= @trade.title %></p>
-            <p class="col-md-3">Item Description: <br><%= @trade.description %></p>
-            <p class="trade-image col-md-6"><%= image_tag @trade.image.url, height: 500, width: 500%></p>
-            <p class="col-md-6"><% if @trade.user == current_user %><%= link_to "Delete Trade!", trade_path(@trade), method: :delete, data: { confirm: "Are you sure you want to delete this trade?"} %> <% end %>
+            <p class="col-md-3"><b>Submitted by: </b><%= link_to @trade.user.name.capitalize, user_profile_path(@trade.user) %></p>
+            <p class="col-md-3"><b>Name of item: </b><br><%= @trade.title %></p>
+            <p class="col-md-5"><b>Item Description: </b><br><%= @trade.description %></p>
+            <p class="trade-image col-md-6"><%= image_tag @trade.image.url, height: 500, width: 500%>
+            <% if @trade.user == current_user %><%= link_to "Delete Trade!", trade_path(@trade), method: :delete, data: { confirm: "Are you sure you want to delete this trade?"} %> </p>
+            <% end %>
         </div>
 
     <% unless Offer.exists?(user: current_user, trade: @trade) %>
         <% if current_user && @trade.user != current_user && !@trade.closed %>
             <%= form_for [@trade, @offer] do |f| %>
                 <div class="make-offer row">
-                    <p class="">Offer Details: <br><%= f.text_field :content, required: true %></p>
+                    <p class=""><b>Offer Details: </b><br><%= f.text_field :content, required: true %></p>
                     <p class=""><%= f.file_field :image, required: true %></p>
                     <p class="sub-offer"><%= f.submit 'Submit Offer!' %></p>
                  </div>
@@ -20,12 +22,12 @@
         <% end %>
     <% end %>
 
-        <% @trade.offers.each do |offer| %>
-            <div class="view-offer row">
-                <p class="col-md-12">Offer submitted by: <br><%= offer.user.name.capitalize %></p>
-                <p class="col-md-12">This is the offer: <br><%= offer.content %></p>
-                <p class="col-md-12"><%= image_tag offer.image.url, height: 250, width: 250 %></p>
-                <p class="col-md-12"><%= link_to "Accept Offer", accept_path(@trade), method: :patch if @trade.user == current_user && !@trade.closed %></p>
-            </div>
-        <% end %>
+    <% @trade.offers.each do |offer| %>
+        <div class="view-offer row">
+            <p class="col-md-12">Offer submitted by: <br><%= offer.user.name.capitalize %></p>
+            <p class="col-md-12">This is the offer: <br><%= offer.content %></p>
+            <p class="col-md-12"><%= image_tag offer.image.url, height: 250, width: 250 %></p>
+            <p class="col-md-12"><%= link_to "Accept Offer", accept_path(@trade), method: :patch if @trade.user == current_user && !@trade.closed %></p>
+        </div>
+    <% end %>
 </div>

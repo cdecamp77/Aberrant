@@ -11,6 +11,7 @@ end
 patch '/offers/:id/accept', to: 'offers#accept', as: 'accept'
 
 resources :users, only: [:new, :create]
+get '/profile/:id', to: 'users#show', as: 'user_profile'
 get '/profile', to: 'users#show'
 get '/profile/edit', to: 'users#edit'
 patch '/profile', to: 'users#update'

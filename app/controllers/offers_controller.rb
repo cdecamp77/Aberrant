@@ -24,7 +24,6 @@ class OffersController < ApplicationController
     def accept
         @trade = Trade.find(params[:id])
         @offer = @trade.offers
-        # @trade.offer = Offer.find(params[:id])
         @offer.update(accepted: true)
         redirect_to trade_path
     end
