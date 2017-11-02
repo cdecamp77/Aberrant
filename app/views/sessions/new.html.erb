@@ -1,18 +1,15 @@
+<div id="log_in" class="container-fluid">
 
-
-<h1>_Log In_</h1>
-<div class="container-fluid">
-<p id="alert"><%= alert %></p>
-<%= form_tag sessions_path do %>
-  <div class="field col-md-12">
-    <p class="row col-md-2">Email: 
-    </span class="col-md-10"><%= text_field_tag :email, params[:email] %></span></p>
+  <h1>Log In</h1>
+  <p id="alert"><%= alert %></p>
+  <%= form_tag sessions_path do %>
+  <div class="field row">
+    <p class="col-md-1">Email: <%= text_field_tag :email, params[:email], required: true %></p>
   </div>
-  <div class="field col-md-12">
-    <p class=" row col-md-2">Password: 
-    </span class="col-md-2"><%= password_field_tag :password %></span></p>
+  <div class="field row">
+    <p class="col-md-1">Password: <%= password_field_tag :password, required: true %></p>
   </div>
-  <div class="actions row"><%= submit_tag "Log In" %></div>
-<% end %>
-
+  <div class="actions row">
+    <p class="col-md-1"><%= submit_tag "Log In" %></p></div>
+  <% end %>
 </div>

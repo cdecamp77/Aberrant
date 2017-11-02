@@ -2,6 +2,8 @@ Rails.application.routes.draw do
 root 'pages#show', page: 'welcome'
 get '/pages/:page', to: 'pages#show'
 
+delete 'trades/:id', to: 'trades#destroy'
+
 resources :trades do
   resources :offers, except: [:index, :show, :new], shallow: true
 end

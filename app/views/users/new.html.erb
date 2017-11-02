@@ -1,5 +1,5 @@
-<div class="container-fluid">
-  <h1 class="row">Sign Up</h1>
+<div id="sign_up" class="container-fluid">
+  <h1>Sign Up</h1>
   <%= form_for @user do |f| %>
   <% if @user.errors.any? %>
     <div class="error_messages">
@@ -12,25 +12,21 @@
     </div>
   <% end %>
   <div class="field row">
-    <span class="col-md-1"><%= f.label :name %></span>
-    <span class=""><%= f.text_field :name, placeholder: "Chris"%></span>
+    <p class="col-md-1"><%= f.label :name %><%= f.text_field :name, placeholder: "your name", required: true %></p>
   </div>
   <div class="field row">
-    <span class="col-md-1"><%= f.label :email %></span>
-    <%= f.text_field :email, placeholder: "name@email.com" %>
+    <p class="col-md-1"><%= f.label :email %><%= f.text_field :email, placeholder: "name@email.com", required: true  %></p>
   </div>
   <div class="field row">
-    <span class="col-md-1"><%= f.label :phone %></span>
-    <%= f.text_field :phone, placeholder: "123456789"%>
+    <p class="col-md-1"><%= f.label :phone %><%= f.text_field :phone, placeholder: "123456789", required: true %></p>
   </div>
   <div class="field row">
-    <span class="col-md-1"><%= f.label :password %></span>
-    <%= f.password_field :password, placeholder: "abc123"%>
+    <p class="col-md-1"><%= f.label :password %><%= f.password_field :password, placeholder: "abc123", required: true %></p>
   </div>
   <div class="field row">
-    <span class="col-md-1"><%= f.label :password_confirmation %></span>
-    <%= f.password_field :password_confirmation, placeholder: "must match above"%>
+    <p class="col-md-1"><%= f.label :password_confirmation %>
+    <%= f.password_field :password_confirmation, placeholder: "Must match password", required: true %></p>
   </div>
-  <div class="actions row col-md-1"><%= f.submit %></div>
+  <p class="actions row col-md-1"><%= f.submit %></p>
   <% end %>
 </div>

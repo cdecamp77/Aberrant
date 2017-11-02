@@ -1,15 +1,19 @@
-<h1>this is the main profile page</h1>
+<h1 class="headline">So <%= @user.name.capitalize %>, whats on the trading block?</h1>
 <div class="container-fluid">
-<p class="col-md-4">User Name: <%= @user.name.capitalize %></p>
-<p class="col-md-4">User Email: <%= @user.email %></p>
-<p class="col-md-4">User Phone Number: 951-218-3629<%= @user.phone %></p>
-
-<ul class="col-md-2">
-  <% @trades.each do |trade| %>
-    <li>
-      <%= image_tag trade.image %><strong><%= link_to "View Trade", trade_path(trade) %> </strong>
+<div class="user-info">
+    <% if current_user %>
+        <p class="col-md-4">User Name: <%= @user.name.capitalize %></p>
+        <p class="col-md-4">User Email: <%= @user.email %></p>
+        <p class="col-md-4">User Phone Number: 951-218-3629<%= @user.phone %></p>
     <% end %>
-    </li>
-</ul>
+</div>
+  <% @trades.each do |trade| %>
+<div class="view-trade">
+    <p class="col-md-6"><%= image_tag trade.image %><br><%= link_to "View Trade", trade_path(trade) %></p>
+    <% if Offer.exists?(trade.offer_id) %>
+    <p class="col-md-6"><%= image_tag offer.image %></p>
+    <% end %>
+</div>
+    <% end %>
 
 </div>

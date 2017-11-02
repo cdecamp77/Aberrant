@@ -1,18 +1,20 @@
-<h1>Created Trades</h1>
+<h1 class="headline">Let's take a look at what is out there.</h1>
 <div class="container-fluid">
-	<div class="filter-bar">
-		<% if params.has_key?(:filter) %><%= link_to "ALL", trades_path %><% else %><span>ALL</span><% end %>
-		&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-		<% if !params.has_key?(:filter) || (params.has_key?(:filter) && params[:filter] == 'CLOSED' ) %><%= link_to "OPEN", trades_path(filter: 'OPEN') %><% else %><span>OPEN</span><% end %>
-		&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-		<% if !params.has_key?(:filter) || (params.has_key?(:filter) && params[:filter] == 'OPEN' ) %><%= link_to "CLOSED", trades_path(filter: 'CLOSED') %><% else %><span>CLOSED</span><% end %>
+	<div id="filter" class="filter-bar row">
+		<p>View Trades by: </p>
+		<p id="all" class="col-md-1"><% if params.has_key?(:filter) %><%= link_to "All", trades_path %><% else %><span>ALL</span><% end %></p>
+		<p id="open" class="col-md-1"><% if !params.has_key?(:filter) || (params.has_key?(:filter) && params[:filter] == 'CLOSED' ) %><%= link_to "Open", trades_path(filter: 'OPEN') %><% else %><span>OPEN</span><% end %></p>
+		<p id="closed" class="col-md-1"><% if !params.has_key?(:filter) || (params.has_key?(:filter) && params[:filter] == 'OPEN' ) %><%= link_to "Closed", trades_path(filter: 'CLOSED') %><% else %><span>CLOSED</span><% end %></p>
 	</div>
-	<div class="col-md-3">
-		<ul class="view-trades">
+	<div>
+		<ul>
 			<% @trades.each do |trade| %>
-				<li class="">Name: <%= trade.title %></li>
-				<li class=""><%= image_tag trade.image.url, height: 200, width: 200 %>
-				<p><%= link_to 'View Trade', trade_path(trade) %></p></li>
+			<div class="row single-trade">
+				<p class="col-md-2">Name: <br><%= trade.title %></p>
+				<p class="col-md-2">Description: <br><%= trade.description %></p>
+				<p class="trade-image col-md-5"><%= image_tag trade.image.url, height: 300, width: 300 %></p>
+				<p class="col-md-3"><%= link_to 'View Trade', trade_path(trade) %></p>
+			</div>
 			<% end %>
 		</ul>
 	</div>
