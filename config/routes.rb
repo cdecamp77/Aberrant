@@ -19,5 +19,4 @@ get '/login', to: 'sessions#new'
 
 resources :sessions, only: [:new, :create, :destroy]
 
-
 end
