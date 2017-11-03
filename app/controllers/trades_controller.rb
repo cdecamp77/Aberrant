@@ -24,9 +24,6 @@ class TradesController < ApplicationController
         end
     end
 
-    def update
-    end
-
     def show
         @user = User.all
         @trade = Trade.find(params[:id])
@@ -42,8 +39,8 @@ class TradesController < ApplicationController
 
 private
 
-  def trade_params
-    params.require(:trade).permit(:title, :description, :image)
-  end
+    def trade_params
+        params.require(:trade).permit(:title, :description, :image)
+    end
 
 end
