@@ -28,8 +28,10 @@ class TradesController < ApplicationController
     end
 
     def show
+        @user = User.all
         @trade = Trade.find(params[:id])
         @offer = Offer.new
+        @user_offer = params[:trade] ? User.find(params[:id]) : current_user
     end
 
     def destroy

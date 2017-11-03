@@ -1,5 +1,5 @@
+![Aberrant](https://i.imgur.com/AC4j1GY.png)
 # Aberrant Barter
-
 
 ### ab·er·rant
 #### departing from an accepted standard

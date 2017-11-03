@@ -24,7 +24,7 @@
 
     <% @trade.offers.each do |offer| %>
         <div class="view-offer row">
-            <p class="col-md-12">Offer submitted by: <br><%= offer.user.name.capitalize %></p>
+            <p class="col-md-12">Offer submitted by: <br><%= link_to offer.user.name.capitalize, user_profile_path(offer.user) %></p>
             <p class="col-md-12">This is the offer: <br><%= offer.content %></p>
             <p class="col-md-12"><%= image_tag offer.image.url, height: 250, width: 250 %></p>
             <p class="col-md-12"><%= link_to "Accept Offer", accept_path(@trade), method: :patch if @trade.user == current_user && !@trade.closed %></p>
